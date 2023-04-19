@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { SectionHeader } from "../";
-import useOnScreen from "../../hooks/useOnScreen";
+import { useOnScreen } from "../../hooks";
 import { gsap } from "gsap";
 import "./style.scss";
 
