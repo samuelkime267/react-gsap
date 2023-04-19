@@ -84,19 +84,25 @@ export default function Gallery() {
       console.log({ current: ref.current });
       let sections = gsap.utils.toArray(".gallery-item-wrapper");
 
-      gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          start: "top top",
-          trigger: ref.current,
-          scroller: "#main-container",
-          pin: true,
-          scrub: 0.5,
-          snap: 1 / (sections.length - 1),
-          end: () => `+=${ref.current.offsetWidth}`,
-        },
-      });
+      gsap.fromTo(
+        sections,
+        { xPercent: 0 },
+        {
+          xPercent: -100 * (sections.length - 1),
+          ease: "none",
+          duration: 2,
+          scrollTrigger: {
+            start: "top top",
+            trigger: ref.current,
+            scroller: "#main-container",
+            pin: true,
+            markers: true,
+            snap: 1 / (sections.length - 1),
+            scrub: true,
+            end: () => `+=${ref.current.offsetWidth}`,
+          },
+        }
+      );
       ScrollTrigger.refresh();
     });
   }, []);
@@ -107,7 +113,7 @@ export default function Gallery() {
 
   return (
     <section data-scroll-section className="section-wrapper gallery-wrap">
-      <div className="gallery" ref={ref}>
+      <div className="gallery" ref={ref} style={{ border: "5px solid black" }}>
         <div className="gallery-counter">
           <span>{activeImage}</span>
           <span className="divider" />

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { SectionHeader } from "../";
-import useOnScreen from "../../hooks/useOnscreen.js";
+import useOnScreen from "../../hooks/useOnScreen";
 import { gsap } from "gsap";
 import "./style.scss";
 
@@ -16,6 +16,7 @@ const Footer = () => {
 
   useEffect(() => {
     if (reveal) {
+      gsap.set(".lineChildren", { autoAlpha: 1 });
       gsap.fromTo(
         ".lineChildren",
         { y: 200, opacity: 0 },
@@ -36,10 +37,10 @@ const Footer = () => {
 
         <h1 className={"location"} id="location-text">
           <div className="lineParent">
-            <div className="lineChildren">Rio de</div>
+            <div className="lineChildren footer-h1">Rio de</div>
           </div>{" "}
           <div className="lineParent">
-            <div className="lineChildren">Janeiro</div>
+            <div className="lineChildren footer-h1">Janeiro</div>
           </div>
         </h1>
       </section>
