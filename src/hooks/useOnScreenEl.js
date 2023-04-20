@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useOnScreen(ref, threshold = 0.3) {
+function useOnScreenEl(ref, threshold = 0.3) {
   const [isIntersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ function useOnScreen(ref, threshold = 0.3) {
 
   return isIntersecting;
 }
-export default useOnScreen;
+export default useOnScreenEl;

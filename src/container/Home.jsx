@@ -15,13 +15,9 @@ const Home = () => {
   const [preloader, setPreloader] = useState(true);
   useLocoScroll(!preloader);
   useEffect(() => {
-    if (document.readyState === "complete") {
-      () => setPreloader(false);
-    } else {
-      window.addEventListener("load", () => setPreloader(false));
-      return () =>
-        document.removeEventListener("load", () => setPreloader(false));
-    }
+    setTimeout(() => {
+      setPreloader(false);
+    }, 3000);
   }, []);
 
   return (

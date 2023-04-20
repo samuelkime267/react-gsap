@@ -87,7 +87,7 @@ export default function Gallery() {
           trigger: ref.current,
           scroller: "#main-container",
           pin: true,
-          markers: true,
+          // markers: true,
           snap: 1 / (sections.length - 1),
           scrub: true,
           end: () => `+=${ref.current.offsetWidth}`,
