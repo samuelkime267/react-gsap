@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import useOnScreen from "../../hooks/useOnScreen";
+import { useOnScreen } from "../../hooks";
 import cn from "classnames";
 
 import "./style.scss";
@@ -76,36 +76,27 @@ export default function Gallery() {
   const [activeImage, setActiveImage] = useState(1);
 
   const ref = useRef(null);
-
   useEffect(() => {
     setTimeout(() => {
-      console.log(ref.current.offsetWidth);
-      console.log(ref.current.clientWidth);
-      console.log({ current: ref.current });
       let sections = gsap.utils.toArray(".gallery-item-wrapper");
+      gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          start: "top top",
+          trigger: ref.current,
+          scroller: "#main-container",
+          pin: true,
+          markers: true,
+          snap: 1 / (sections.length - 1),
+          scrub: true,
+          end: () => `+=${ref.current.offsetWidth}`,
+        },
+      });
 
-      gsap.fromTo(
-        sections,
-        { xPercent: 0 },
-        {
-          xPercent: -100 * (sections.length - 1),
-          ease: "none",
-          duration: 2,
-          scrollTrigger: {
-            start: "top top",
-            trigger: ref.current,
-            scroller: "#main-container",
-            pin: true,
-            markers: true,
-            snap: 1 / (sections.length - 1),
-            scrub: true,
-            end: () => `+=${ref.current.offsetWidth}`,
-          },
-        }
-      );
       ScrollTrigger.refresh();
     });
-  }, []);
+  }, [ref.current]);
 
   const handleUpdateActiveImage = (index) => {
     setActiveImage(index + 1);

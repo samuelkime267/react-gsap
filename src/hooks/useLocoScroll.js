@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/src/locomotive-scroll.scss";
@@ -35,7 +35,6 @@ export default function useLocoScroll(start) {
       },
       scrollLeft(value) {
         if (locoScroll) {
-          console.log(arguments);
           return arguments.length
             ? locoScroll.scrollTo(value, 0, 0)
             : locoScroll.scroll.instance.scroll.x;
