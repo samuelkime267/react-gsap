@@ -13,6 +13,7 @@ import useLocoScroll from "../hooks/useLocoScroll";
 
 const Home = () => {
   const [preloader, setPreloader] = useState(true);
+
   useLocoScroll(!preloader);
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +30,7 @@ const Home = () => {
           <h1>rio de janeiro</h1>
         </div>
       ) : (
-        <div id="main-container">
+        <div data-scroll-container id="main-container">
           <Navbar />
           <Header />
           <Featured />
