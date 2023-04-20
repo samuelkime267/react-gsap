@@ -87,6 +87,7 @@ export default function Gallery() {
           trigger: ref.current,
           scroller: "#main-container",
           pin: true,
+          pinSpacing: true,
           // markers: true,
           snap: 1 / (sections.length - 1),
           scrub: true,
@@ -104,7 +105,7 @@ export default function Gallery() {
 
   return (
     <section data-scroll-section className="section-wrapper gallery-wrap">
-      <div className="gallery" ref={ref} style={{ border: "5px solid black" }}>
+      <div className="gallery" ref={ref}>
         <div className="gallery-counter">
           <span>{activeImage}</span>
           <span className="divider" />
