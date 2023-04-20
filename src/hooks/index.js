@@ -1,4 +1,4 @@
-import useOnScreen from "./useOnScreen";
+import useOnScreenEl from "./useOnScreenEl";
 import useLocoScroll from "./useLocoScroll";
 
-export { useOnScreen, useLocoScroll };
+export { useOnScreenEl, useLocoScroll };

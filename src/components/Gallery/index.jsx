@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useOnScreen } from "../../hooks";
+import { useOnScreenEl } from "../../hooks";
 import cn from "classnames";
 
 import "./style.scss";
@@ -42,7 +42,7 @@ function GalleryItem({
 }) {
   const ref = useRef(null);
 
-  const onScreen = useOnScreen(ref, 0.5);
+  const onScreen = useOnScreenEl(ref, 0.5);
 
   useEffect(() => {
     if (onScreen) {

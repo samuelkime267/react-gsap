@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { SectionHeader } from "../";
-import { useOnScreen } from "../../hooks";
+import { useOnScreenEl } from "../../hooks";
 import { gsap } from "gsap";
 import "./style.scss";
 
@@ -8,7 +8,7 @@ const Footer = () => {
   const ref = useRef(null);
 
   const [reveal, setReveal] = useState(false);
-  const onScreen = useOnScreen(ref, 0.5);
+  const onScreen = useOnScreenEl(ref, 0.5);
 
   useEffect(() => {
     if (onScreen) setReveal(onScreen);
